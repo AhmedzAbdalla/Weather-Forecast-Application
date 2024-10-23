@@ -1,5 +1,4 @@
-package com.giraffe.weatherforecasapplication.utils
-
+package com.example.weather
 import android.content.Context
 import android.location.Geocoder
 import com.example.weather.R

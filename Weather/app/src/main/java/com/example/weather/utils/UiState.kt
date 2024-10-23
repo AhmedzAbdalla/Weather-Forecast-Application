@@ -1,5 +1,4 @@
-package com.giraffe.weatherforecasapplication.utils
-
+package com.example.weather
 
 sealed class UiState<out T>{
     class Success<out T>(val data: T):UiState<T>()

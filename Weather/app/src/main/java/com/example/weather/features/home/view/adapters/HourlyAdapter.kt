@@ -5,10 +5,6 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.weather.databinding.HourlyItemBinding
-import com.giraffe.weatherforecasapplication.utils.Constants
-import com.giraffe.weatherforecasapplication.utils.getIconRes
-import com.giraffe.weatherforecasapplication.utils.toFahrenheit
-import com.giraffe.weatherforecasapplication.utils.toKelvin
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

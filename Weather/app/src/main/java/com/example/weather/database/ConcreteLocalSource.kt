@@ -1,8 +1,6 @@
 package com.example.weather
 
 import android.content.Context
-import com.giraffe.weatherforecasapplication.utils.Constants
-import com.giraffe.weatherforecasapplication.utils.getAddress
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.flow
 

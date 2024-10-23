@@ -3,14 +3,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.weather.Constants
 import com.example.weather.Daily
 import com.example.weather.R
 import com.example.weather.databinding.DailyItemBinding
-
-import com.giraffe.weatherforecasapplication.utils.Constants
-import com.giraffe.weatherforecasapplication.utils.getIconRes
-import com.giraffe.weatherforecasapplication.utils.toFahrenheit
-import com.giraffe.weatherforecasapplication.utils.toKelvin
+import com.example.weather.getIconRes
+import com.example.weather.toFahrenheit
+import com.example.weather.toKelvin
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.weather.features.home.view.Fragment_home
 import com.giraffe.weatherforecasapplication.features.home.viewmodel.HomeVM
-import com.giraffe.weatherforecasapplication.utils.ViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

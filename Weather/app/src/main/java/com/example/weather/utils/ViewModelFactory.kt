@@ -1,5 +1,4 @@
-package com.giraffe.weatherforecasapplication.utils
-
+package com.example.weather
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.weather.RepoInterface

@@ -23,21 +23,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.weather.ApiClient
 import com.example.weather.ConcreteLocalSource
+import com.example.weather.Constants
 import com.example.weather.ForecastModel
 import com.example.weather.HourlyAdapter
 import com.example.weather.R
 import com.example.weather.Repo
 import com.example.weather.SharedVM
+import com.example.weather.UiState
+import com.example.weather.ViewModelFactory
 import com.example.weather.databinding.FragmentHomeBinding
 import com.example.weather.features.home.view.adapters.DailyAdapter
+import com.example.weather.getIconRes
+import com.example.weather.toFahrenheit
+import com.example.weather.toKelvin
+import com.example.weather.toMilesPerHours
 import com.giraffe.weatherforecasapplication.features.home.viewmodel.HomeVM
-import com.giraffe.weatherforecasapplication.utils.Constants
-import com.giraffe.weatherforecasapplication.utils.UiState
-import com.giraffe.weatherforecasapplication.utils.ViewModelFactory
-import com.giraffe.weatherforecasapplication.utils.getIconRes
-import com.giraffe.weatherforecasapplication.utils.toFahrenheit
-import com.giraffe.weatherforecasapplication.utils.toKelvin
-import com.giraffe.weatherforecasapplication.utils.toMilesPerHours
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -52,7 +52,18 @@ import java.util.TimeZone
 
 
 class Fragment_home : Fragment() {
-
+    var forecast = ForecastModel(
+        lat = 0.0,                           // Dummy value for latitude
+        lon = 0.0,                           // Dummy value for longitude
+        timezone = "CVCVCV",                    // Dummy string for timezone
+        timezone_offset = 0.0,               // Dummy value for timezone offset
+        current = null,                      // Null for current weather data
+        daily = emptyList(),                 // Empty list for daily forecast
+        hourly = emptyList(),                // Empty list for hourly forecast
+        isCurrent = false,                   // Dummy value for isCurrent
+        isFavorite = false,                  // Dummy value for isFavorite
+        alerts = null                        // Null for alerts (optional)
+    )
     val REQUEST_CODE = 7007
     val TAG = "HomeFragment"
     private lateinit var binding: FragmentHomeBinding
@@ -82,10 +93,10 @@ class Fragment_home : Fragment() {
     private fun handleInit() {
         factory =
             ViewModelFactory(Repo.getInstance(ApiClient, ConcreteLocalSource(requireContext())))
-        viewModel = ViewModelProvider(this, factory)[HomeVM::class.java]
+        //viewModel = ViewModelProvider(this, factory)[HomeVM::class.java]
         sharedVM = ViewModelProvider(requireActivity(), factory)[SharedVM::class.java]
-        fusedLocationProviderClient =
-            LocationServices.getFusedLocationProviderClient(requireActivity())
+//        fusedLocationProviderClient =
+//            LocationServices.getFusedLocationProviderClient(requireActivity())
     }
 
     override fun onCreateView(
@@ -95,6 +106,7 @@ class Fragment_home : Fragment() {
     ): View {
         Log.v(TAG, "onCreateView: ")
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -117,7 +129,6 @@ class Fragment_home : Fragment() {
 
 
     //==========================
-
 
     private var selectedForecastJob: Job? = null
     private fun observeSelectedForecast() {
@@ -143,9 +154,13 @@ class Fragment_home : Fragment() {
                         it.data?.let { selectedForecast ->
                             selectedLat = selectedForecast.lat
                             selectedLon = selectedForecast.lon
+                            forecast.timezone=selectedForecast.timezone
+                            binding.lForecastModel= selectedForecast
                             handleForecastUI(selectedForecast)
                         }
                     }
+
+                    else -> {}
                 }
 
             }
@@ -154,17 +169,17 @@ class Fragment_home : Fragment() {
 
     private fun handleForecastUI(forecast: ForecastModel) {
         Log.w(TAG, "handleForecastUI: $forecast")
-        handleCurrentTemp(forecast)
-        handleTimeZone(forecast)
+        //handleCurrentTemp(forecast)
+        //handleTimeZone(forecast)
         handleCurrentIcon(forecast)
-        handleCurrentDescription(forecast)
+        //handleCurrentDescription(forecast)
         handleCurrentTimeDate(forecast)
         handleCurrentWind(forecast)
-        handleCurrentHumidity(forecast)
-        handleCurrentPressure(forecast)
-        handleCurrentUV(forecast)
-        handleCurrentCloudiness(forecast)
-        handleCurrentDirection(forecast)
+        //handleCurrentHumidity(forecast)
+        //handleCurrentPressure(forecast)
+        //handleCurrentUV(forecast)
+        //handleCurrentCloudiness(forecast)
+        //handleCurrentDirection(forecast)
         dailyAdapter.updateList(forecast.daily)
         hourlyAdapter.updateList(forecast.hourly.take(24))
         handleFavoriteIcon(forecast)
@@ -204,7 +219,7 @@ class Fragment_home : Fragment() {
 
 
     private fun handleTimeZone(forecast: ForecastModel) {
-        binding.tvZone.text = forecast.timezone
+        binding.tvZone.text = "forecast.timezone"
 
     }
 
@@ -283,7 +298,7 @@ class Fragment_home : Fragment() {
         }
     }
 
-    private fun convertTempToString(temp: Double, tempUnit: String): String {
+     fun convertTempToString(temp: Double, tempUnit: String): String {
         return when (tempUnit) {
             Constants.TempUnits.CELSIUS -> temp.toInt().toString().plus(getString(R.string.c))
             Constants.TempUnits.FAHRENHEIT -> temp.toFahrenheit().toInt().toString()

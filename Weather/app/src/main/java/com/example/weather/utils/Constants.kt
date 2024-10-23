@@ -1,5 +1,4 @@
-package com.giraffe.weatherforecasapplication.utils
-
+package com.example.weather
 object Constants {
     const val URL = "https://api.openweathermap.org/"
     const val API_KEY = "375d11598481406538e244d548560243"

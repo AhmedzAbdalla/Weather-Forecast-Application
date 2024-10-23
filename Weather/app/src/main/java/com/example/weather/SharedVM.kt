@@ -3,9 +3,6 @@ package com.example.weather
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.giraffe.weatherforecasapplication.utils.Constants
-import com.giraffe.weatherforecasapplication.utils.UiState
-import com.giraffe.weatherforecasapplication.utils.getAddress
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,12 +15,16 @@ class SharedVM(val repo: RepoInterface) : ViewModel() {
     //============================states============================
     private val _language = MutableStateFlow(Constants.Languages.ENGLISH)
     val language: StateFlow<String> = _language.asStateFlow()
+
     private val _tempUnit = MutableStateFlow(Constants.TempUnits.CELSIUS)
     val tempUnit: StateFlow<String> = _tempUnit.asStateFlow()
+
     private val _windSpeedUnit = MutableStateFlow(Constants.WindSpeedUnits.METRE)
     val windSpeedUnit: StateFlow<String> = _windSpeedUnit.asStateFlow()
+
     private val _favorites = MutableStateFlow<List<ForecastModel>>(emptyList())
     val favorites: StateFlow<List<ForecastModel>> = _favorites
+
     private val _selectedForecast = MutableStateFlow<UiState<ForecastModel?>>(UiState.Loading)
     val selectedForecast: StateFlow<UiState<ForecastModel?>> = _selectedForecast.asStateFlow()
 
