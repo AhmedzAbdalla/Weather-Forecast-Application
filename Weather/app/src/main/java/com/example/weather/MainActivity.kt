@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.weather.features.favorites.Fragment_Favorite
 import com.example.weather.features.home.view.Fragment_home
 import com.giraffe.weatherforecasapplication.features.home.viewmodel.HomeVM
 import com.google.android.material.bottomnavigation.BottomNavigationView
