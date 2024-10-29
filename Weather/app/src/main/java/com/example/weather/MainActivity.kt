@@ -2,6 +2,7 @@ package com.example.weather
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: HomeVM
     private lateinit var factory: ViewModelFactory
     private lateinit var sharedVM: SharedVM
+    private lateinit var CurrentFragmentName : TextView
 
     var bottomNavigationView: BottomNavigationView? = null
 
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
+        CurrentFragmentName = findViewById(R.id.CurrentFragmentName)
 
 
         // Check for internet connection before making any network requests
@@ -80,20 +83,20 @@ class MainActivity : AppCompatActivity() {
             // Use if-else instead of switch-case
             if (item.itemId == R.id.nav_home) {
                 selectedFragment = Fragment_home()
-                //CurrentFragmentName.setText("Home")
+                CurrentFragmentName.setText("Home")
                 Log.i("TAG", "Home Selected")
             } else if (item.itemId == R.id.nav_favorite) {
                 //selectedFragment = new Fragment_Search();
                 selectedFragment = Fragment_Favorite()
-                //CurrentFragmentName.setText("Favorites")
+                CurrentFragmentName.setText("Favorites")
                 Log.i("TAG", "Favorites Selected")
             } else if (item.itemId == R.id.nav_settings) {
                 selectedFragment = Fragment_Settings()
-                //CurrentFragmentName.setText("Search")
+                CurrentFragmentName.setText("Settings")
                 Log.i("TAG", "Settings Selected")
             } else if (item.itemId == R.id.nav_alert) {
-                selectedFragment = Fragment_Alert()
-                //CurrentFragmentName.setText("My Plan")
+                selectedFragment = AlertsFragment()
+                CurrentFragmentName.setText("Alerts")
                 Log.i("TAG", "Alert Selected")
             }
 

@@ -9,27 +9,17 @@
     android:layout_height="match_parent"
     tools:context=".features.favorites.Fragment_Favorite">
 
-    <ImageView
-        android:id="@+id/iv_more"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="8dp"
-        android:src="@drawable/more_ic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/red" />
-
     <TextView
         android:id="@+id/tv_favorites"
         style="@style/text_withe_30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/favorites"
+        android:layout_marginTop="5dp"
+        android:text=""
         android:textColor="@color/gray"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_more"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_more" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorites"

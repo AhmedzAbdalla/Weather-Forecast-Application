@@ -71,12 +71,11 @@ class Fragment_home : Fragment() {
     private lateinit var factory: ViewModelFactory
     private lateinit var hourlyAdapter: HourlyAdapter
     private lateinit var dailyAdapter: DailyAdapter
-    //private lateinit var onDrawerClick: OnDrawerClick
     private lateinit var sharedVM: SharedVM
-    private lateinit var selectedForecast: ForecastModel
-    private lateinit var tempUnit: String
-    private lateinit var windSpeedUnit: String
-    private lateinit var favorites: List<ForecastModel>
+    //private lateinit var selectedForecast: ForecastModel
+    //private lateinit var tempUnit: String
+    //private lateinit var windSpeedUnit: String
+    //private lateinit var favorites: List<ForecastModel>
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var location: Location? = null
     private var selectedLat: Double = 0.0
@@ -170,7 +169,7 @@ class Fragment_home : Fragment() {
     private fun handleForecastUI(forecast: ForecastModel) {
         Log.w(TAG, "handleForecastUI: $forecast")
         //handleCurrentTemp(forecast)
-        //handleTimeZone(forecast)
+        handleTimeZone(forecast)
         handleCurrentIcon(forecast)
         //handleCurrentDescription(forecast)
         handleCurrentTimeDate(forecast)
@@ -219,7 +218,7 @@ class Fragment_home : Fragment() {
 
 
     private fun handleTimeZone(forecast: ForecastModel) {
-        binding.tvZone.text = "forecast.timezone"
+        binding.tvZone.text = forecast.timezone
 
     }
 
@@ -338,27 +337,27 @@ class Fragment_home : Fragment() {
 
     private val locationCallback: LocationCallback = object : LocationCallback() {
 
-        override fun onLocationResult(locationResult: LocationResult) {
-            location = locationResult.lastLocation
-            selectedLat = location?.latitude ?: 0.0
-            selectedLon = location?.longitude ?: 0.0
-            Log.i(TAG, "onLocationResult: $selectedLat , $selectedLon ")
-            sharedVM.getForecast(selectedLat, selectedLon)
-            fusedLocationProviderClient.removeLocationUpdates(this)
-        }
+        //override fun onLocationResult(locationResult: LocationResult) {
+        //    location = locationResult.lastLocation
+        //    selectedLat = location?.latitude ?: 0.0
+        //    selectedLon = location?.longitude ?: 0.0
+        //    Log.i(TAG, "onLocationResult: $selectedLat , $selectedLon ")
+        //    sharedVM.getForecast(selectedLat, selectedLon)
+        //    fusedLocationProviderClient.removeLocationUpdates(this)
+        //}
     }
 
     private fun getLocation() {
-        Log.i(TAG, "getLocation: ")
-        if (checkPermissions()) {
-            if (isLocationEnabled()) {
-                requestNewLocationData()
-            } else {
-                startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
-            }
-        } else {
-            requestPermissions()
-        }
+       //Log.i(TAG, "getLocation: ")
+       //if (checkPermissions()) {
+       //    if (isLocationEnabled()) {
+       //        requestNewLocationData()
+       //    } else {
+       //        startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+       //    }
+       //} else {
+       //    requestPermissions()
+       //}
     }
 
     private fun checkPermissions(): Boolean {
