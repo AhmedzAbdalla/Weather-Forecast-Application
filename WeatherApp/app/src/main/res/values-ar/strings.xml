@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">الرئيسية</string>
+    <string name="favorites">المفضلة</string>
+    <string name="alerts">التنبيهات</string>
+    <string name="settings">الإعدادات</string>
+    <string name="language">اللغة</string>
+    <string name="english">الإنجليزية</string>
+    <string name="arabic">Arabic</string>
+    <string name="k">K</string>
+    <string name="f">°F</string>
+    <string name="c">°C</string>
+    <string name="miles_hour">ميل/ساعة</string>
+    <string name="metre_sec">متر/ثانية</string>
+    <string name="on">مفعّل</string>
+    <string name="off">معطّل</string>
+    <string name="wind_speed_unit">وحدة سرعة الرياح</string>
+    <string name="notifications">الإشعارات</string>
+    <string name="temperature_unit">وحدة الحرارة</string>
+    <string name="confirm">تأكيد</string>
+    <string name="notification">إشعار</string>
+    <string name="alarm">تنبيه</string>
+    <string name="alert_type">نوع التنبيه:</string>
+    <string name="start_date_and_time">تاريخ ووقت البداية:</string>
+    <string name="end_date_and_time">تاريخ ووقت الانتهاء:</string>
+    <string name="select_start_date_and_time">حدد تاريخ ووقت البداية</string>
+    <string name="select_end_date_and_time_optional">حدد تاريخ ووقت الانتهاء (اختياري)</string>
+    <string name="everything_is_fine_in_that_area">كل شئ على ما يرام بتلك المنطقة</string>
+    <string name="be_careful_of_the_weather_in_that_area_as_there_are_warnings">إحذر فإن هنالك بعض التقلبات الجوية بتلك المنطقة</string>
+    <string name="the_temperature_now_is">درجة الحرارة الآن هي %1$s</string>
+    <string name="at">في: %1$s</string>
+    <string name="from_to">من: %1$s\nإلى: %2$s</string>
+    <string name="cloudiness">السحب</string>
+    <string name="wind_direction">اتجاه الرياح</string>
+    <string name="pressure">الضغط</string>
+    <string name="uv">الأشعة فوق البنفسجية</string>
+    <string name="humidity">الرطوبة</string>
+    <string name="wind">سرعة الرياح</string>
+    <string name="make_sure_you_are_connected_to_the_internet">تحقق من أنك متصل بالإنترنت</string>
+    <string name="your_locations">موقعك:</string>
+
+</resources>
